@@ -1,0 +1,29 @@
+# memory-sentry
+
+> A Claude Code skill for proactive memory monitoring and cleanup on macOS.
+
+## What this skill does
+Diagnoses and fixes memory bloat in Claude Code sessions on macOS.
+Monitors memory pressure, identifies orphan VS Code Helper processes,
+and guides safe cleanup in the correct order.
+
+## When to use this skill
+- Claude Code shows "High memory usage (X GB) · /heapdump"
+- VS Code Helper processes are consuming excessive RAM
+- Mac feels slow during a Claude Code session
+- You want to run /compact, sudo purge, or kill orphan processes
+- You need a system memory health check
+
+## Files
+- SKILL.md — full instructions Claude follows
+- scripts/check_pressure.sh — system memory health report
+- scripts/find_orphans.sh — list stale VS Code Helper processes
+- scripts/kill_orphans.sh — safely terminate orphan helpers
+- scripts/watch_memory.sh — background monitor with alerts
+- install.sh — one-time setup (chmod +x all scripts)
+
+## Install
+npx skills add Mohammed21Sharraf/memory-sentry
+
+## Requirements
+macOS 12+, bash, sysctl, ps, pkill, vm_stat, bc (all built into macOS)
